@@ -1,0 +1,20 @@
+What inputs the system should accept?
+-The user must enter his/her information in the application of the system(Fisrt Name, Last Name,Email,Gender,Birthday,Phone,City)
+ to create his/her page.
+-After register ,he/she enter to the system and Completes registration ,ex( uploade his profile picture )and complete Additional information,ex (works at,studied at,activites,etc..).
+
+What outputs the system should produce?
+-When the users complete all information,the system stored this information to review any time.
+ -The system produce some services for the users:
+*The user can add some people in his/her friend's list and delete from this list if he/she want.
+*The user can send messages the other users and revieve messages from them .
+*The user can create pages for specific entity or product  on the system and posts to this pages,and the other users can enter to this pages and like,share the posts.
+*The user can create groups by fill out the application (Group name,members,determine the privacy : public -anynoe can see the group,its members and their posts, or private for specific user -only members can find the group and see posts)
+this groups manage by some users determined by the user create this pages.
+*The user can post posts to his/her page or Add photos and the other friends users can like,share this posts /photos ,and this user  have some information (number of likes, number of shares) .
+*The user can make hashtag # (the symbol is used to  categorize the content of specific post)
+ if user wants to write a post about "history", he/she write the post and in the final of the post write #histoy ,it help the other users ,If another user wants to read some posts about history write #history and the system display the posts related to history sorted by importance ( posts written by sponsored users should be more important than  posts written by normal users) 
+
+ 
+
+
