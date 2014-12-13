@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public abstract class GroupPrivacy {
 
   public List<IUser> allowedUsers;

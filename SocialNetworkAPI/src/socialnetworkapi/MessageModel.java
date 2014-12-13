@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class MessageModel {
 
   public void createMessage() {

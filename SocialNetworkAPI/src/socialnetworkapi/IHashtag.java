@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class IHashtag {
 
   public void sort(String text) {

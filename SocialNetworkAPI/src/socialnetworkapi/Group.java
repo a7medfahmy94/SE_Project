@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class Group extends IGroup {
 
   public String title;

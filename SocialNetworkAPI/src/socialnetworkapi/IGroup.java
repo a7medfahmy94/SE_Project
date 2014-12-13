@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 import java.util.Vector;
 
 public abstract class IGroup {

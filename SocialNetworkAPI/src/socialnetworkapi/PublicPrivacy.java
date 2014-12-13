@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class PublicPrivacy extends GroupPrivacy {
 
   public Integer importance;

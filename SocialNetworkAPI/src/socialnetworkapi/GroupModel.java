@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class GroupModel {
 
     public Group myGroup;

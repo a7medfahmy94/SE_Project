@@ -1,3 +1,7 @@
+package socialnetworkapi;
+
+import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 
 public abstract class User {
@@ -10,7 +14,7 @@ public abstract class User {
 
   public String email;
 
-  public User user;
+  private static User currentUser;
 
   public Message message;
 
@@ -23,22 +27,31 @@ public abstract class User {
   public Vector  memberIn;
     public Vector  myClosedPrivacy;
     public Vector  myPage;
-    public Vector  myPage;
     public Vector  myIPage;
-    public Vector  myUser;
-    public Vector  myUser;
-    public Vector  0..*;
+    public Vector  myUserG;
     public Vector  myMessage;
     public UserModel myUserModel;
 
-  public abstract void sendFriendRequest();
+    
+  public abstract boolean sendFriendRequest(User u);
 
   public abstract void addFriend();
 
-  public void signUp() {
+  public static boolean signUp(HashMap<String,String> data) {
+      User newUser;
+      if(data.get("userType").equals("premium")){
+          newUser = PremiumUser.makeInstance();
+      }else{
+          newUser = NormalUser.makeInstance();
+      }
+      if(newUser != null){
+          return UserModel.saveUserData(newUser);
+      }
+      return false;
   }
 
-  public void getCurrentActiveUser() {
+  public static User getCurrentActiveUser() {
+      return currentUser;
   }
 
   public void login() {

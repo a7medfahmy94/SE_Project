@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class GroupChatMessage extends Message {
 
   public List<IUser> allUsers;

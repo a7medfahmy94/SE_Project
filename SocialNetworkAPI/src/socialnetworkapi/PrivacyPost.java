@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public abstract class PrivacyPost extends Post {
 
   public Post myPost;

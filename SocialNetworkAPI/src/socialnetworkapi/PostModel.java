@@ -1,6 +1,9 @@
+package socialnetworkapi;
+
 public class PostModel {
 
-  public void createPost() {
+  public static boolean createPost(Post p) {
+      return true;
   }
 
   public void deletePost() {

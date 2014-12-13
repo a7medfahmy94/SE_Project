@@ -1,3 +1,5 @@
+package socialnetworkapi;
+
 public class ChatMessage extends Message {
 
   public IUser receiver;
