@@ -1,6 +1,6 @@
 package socialnetworkapi;
 
-public class PremiumUser extends User {
+public class PremiumUser extends IUser {
 
   public String creditCardNumber;
 
@@ -10,7 +10,7 @@ public class PremiumUser extends User {
       return true;
   }
   
-  public static User makeInstance(){
+  public static IUser makeInstance(){
       PremiumUser ret = new PremiumUser();
       if(ret.payByCredit()){
           return ret;
@@ -20,7 +20,7 @@ public class PremiumUser extends User {
   }
 
     @Override
-    public boolean sendFriendRequest(User u) {
+    public boolean sendFriendRequest(IUser u) {
         return UserModel.makeFriendRequest(this, u);
     }
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-public abstract class User {
+public abstract class IUser {
 
   public List<IGroup> subscribedGroups;
 
@@ -14,12 +14,12 @@ public abstract class User {
 
   public String email;
 
-  private static User currentUser;
+  private static IUser currentUser;
 
   public Message message;
 
-    public User myUser;
-    public User Instance;
+    public IUser myUser;
+    public IUser Instance;
     /**
    * 
    * @element-type IGroup
@@ -33,12 +33,12 @@ public abstract class User {
     public UserModel myUserModel;
 
     
-  public abstract boolean sendFriendRequest(User u);
+  public abstract boolean sendFriendRequest(IUser u);
 
   public abstract void addFriend();
 
   public static boolean signUp(HashMap<String,String> data) {
-      User newUser;
+      IUser newUser;
       if(data.get("userType").equals("premium")){
           newUser = PremiumUser.makeInstance();
       }else{
@@ -50,7 +50,7 @@ public abstract class User {
       return false;
   }
 
-  public static User getCurrentActiveUser() {
+  public static IUser getCurrentActiveUser() {
       return currentUser;
   }
 

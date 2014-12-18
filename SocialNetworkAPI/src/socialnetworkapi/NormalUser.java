@@ -1,6 +1,6 @@
 package socialnetworkapi;
 
-public class NormalUser extends User {
+public class NormalUser extends IUser {
 
     private NormalUser(){}
     
@@ -11,14 +11,14 @@ public class NormalUser extends User {
     public void initializeFriends(){  
     }
   
-    public static User makeInstance(){
+    public static IUser makeInstance(){
         NormalUser ret = new NormalUser();
         ret.initializeFriends();
         return ret;
     }
 
     @Override
-    public boolean sendFriendRequest(User u) {
+    public boolean sendFriendRequest(IUser u) {
         if(this.checkCurrentFriendsCount()){
             return UserModel.makeFriendRequest(this,u);
         }

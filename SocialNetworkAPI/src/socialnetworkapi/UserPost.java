@@ -1,10 +1,10 @@
 package socialnetworkapi;
 
 public class UserPost extends Post {
-    private User user;
+    private IUser user;
     
-    public void setUser(User u){user = u;}
-    public User getUser(){return user;}
+    public void setUser(IUser u){user = u;}
+    public IUser getUser(){return user;}
     
     public void writePost() {
         

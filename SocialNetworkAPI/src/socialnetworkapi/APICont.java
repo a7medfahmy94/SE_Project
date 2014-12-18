@@ -4,19 +4,19 @@ import java.util.HashMap;
 
 public class APICont {
     public boolean createUser(HashMap<String,String> data){
-        return User.signUp(data);        
+        return IUser.signUp(data);        
     }
     
     public boolean makeAPost(String text){
-        User user = User.getCurrentActiveUser();
+        IUser user = IUser.getCurrentActiveUser();
         UserPost post = new UserPost();
         post.setUser(user);
         PrivatePost ppost = new PrivatePost(post);
         return ppost.savePost();
     }
 
-    public boolean sendFriendRequest(User user){
-        User activeUser = User.getCurrentActiveUser();
+    public boolean sendFriendRequest(IUser user){
+        IUser activeUser = IUser.getCurrentActiveUser();
         activeUser.sendFriendRequest(user);
         return true;
     }

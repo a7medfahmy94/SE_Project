@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserModel {
 
-    public User myUser;
+    public IUser myUser;
 
   public void CreateUser() {
   }
@@ -19,15 +19,15 @@ public class UserModel {
   public void updateUser() {
   }
   
-  public static boolean saveUserData(User object){
+  public static boolean saveUserData(IUser object){
       return true;
   }
   
-  public static List getUserFriends(User user){
+  public static List getUserFriends(IUser user){
       return new ArrayList();
   }
  
-  public static boolean makeFriendRequest(User s,User d){
+  public static boolean makeFriendRequest(IUser s,IUser d){
       return true;
   }
   

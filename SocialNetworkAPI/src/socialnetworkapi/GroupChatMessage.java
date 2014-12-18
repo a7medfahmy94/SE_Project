@@ -1,5 +1,7 @@
 package socialnetworkapi;
 
+import java.util.List;
+
 public class GroupChatMessage extends Message {
 
   public List<IUser> allUsers;

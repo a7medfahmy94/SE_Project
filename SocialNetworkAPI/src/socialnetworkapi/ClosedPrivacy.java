@@ -3,7 +3,7 @@ package socialnetworkapi;
 public class ClosedPrivacy extends GroupPrivacy {
 
   
-  public void isAllowed(User user) {
+  public void isAllowed(IUser user) {
   }
 
 }
