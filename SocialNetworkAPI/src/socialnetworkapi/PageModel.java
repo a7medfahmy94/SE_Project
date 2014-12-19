@@ -15,5 +15,8 @@ public class PageModel {
 
   public void updatePage() {
   }
+  public boolean createLike(IPage page,IUser user){
+      return true;
+  }
 
 }

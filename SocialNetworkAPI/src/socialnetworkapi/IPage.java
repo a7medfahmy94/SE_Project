@@ -11,7 +11,8 @@ public abstract class IPage {
    */
   public Vector  like;
 
-  public void likeAPage() {
+  public static boolean likeAPage(IPage page,IUser userObject) {
+      return true;
   }
 
 }

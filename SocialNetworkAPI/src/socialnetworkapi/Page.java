@@ -10,7 +10,6 @@ public class Page extends IPage {
     public Vector  myUser;
     public PageModel myPageModel;
 
-    public void likeAPage() {
-    }
+    
 
 }

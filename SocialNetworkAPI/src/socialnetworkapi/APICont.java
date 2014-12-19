@@ -8,6 +8,7 @@ public class APICont {
         IGroup.promoteUser(user,newRole);
     }
     
+    
     public List<IUser> searchForUser(String email){
         List<IUser> ret;
         IUser user = IUser.getCurrentActiveUser();
@@ -37,6 +38,15 @@ public class APICont {
         Message m = new ChatMessage();
         m.addReceiver(user);
         m.sendMessage();
+        return true;
+    }
+    public boolean likeAPage(IPage page){
+       
+        IUser userObject=IUser.getCurrentActiveUser();
+        IPage.likeAPage(page,userObject);
+        
+        
+        
         return true;
     }
 }
