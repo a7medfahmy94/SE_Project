@@ -4,12 +4,9 @@ import java.util.Vector;
 
 public abstract class Message {
 
-    public Vector  myUser;
 
-  public void sendMessage() {
-  }
+  public abstract void sendMessage();
 
-  public void addReceiver() {
-  }
+  public abstract void addReceiver(IUser user);
 
 }

@@ -8,7 +8,12 @@ public class GroupChatMessage extends Message {
 
   public String title;
 
-  public void addReceiver() {
+  public void addReceiver(IUser user) {
   }
+
+    @Override
+    public void sendMessage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

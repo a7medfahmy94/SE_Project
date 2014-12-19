@@ -2,16 +2,17 @@ package socialnetworkapi;
 
 public class MessageModel {
 
-  public void createMessage() {
+  public static boolean createMessage(IUser receiver,IUser sender) {
+      return true;
   }
 
-  public void deleteMessage() {
+  public static void deleteMessage() {
   }
 
-  public void getMessage() {
+  public static void getMessage() {
   }
 
-  public void updateMessage() {
+  public static void updateMessage() {
   }
 
 }

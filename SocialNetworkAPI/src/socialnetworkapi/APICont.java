@@ -1,8 +1,20 @@
 package socialnetworkapi;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class APICont {
+    public boolean promoteMember(IUser user,String newRole){
+        IGroup.promoteUser(user,newRole);
+    }
+    
+    public List<IUser> searchForUser(String email){
+        List<IUser> ret;
+        IUser user = IUser.getCurrentActiveUser();
+        ret = UserModel.getUsers(email);
+        return ret;
+    }
+    
     public boolean createUser(HashMap<String,String> data){
         return IUser.signUp(data);        
     }
@@ -18,6 +30,13 @@ public class APICont {
     public boolean sendFriendRequest(IUser user){
         IUser activeUser = IUser.getCurrentActiveUser();
         activeUser.sendFriendRequest(user);
+        return true;
+    }
+    
+    public boolean sendAMessage(IUser user){
+        Message m = new ChatMessage();
+        m.addReceiver(user);
+        m.sendMessage();
         return true;
     }
 }

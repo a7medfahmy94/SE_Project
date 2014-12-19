@@ -13,7 +13,8 @@ public class UserModel {
   public void DeleteUser() {
   }
 
-  public void getUser() {
+  public static ArrayList<IUser> getUsers(String email) {
+      return new ArrayList<IUser>();
   }
 
   public void updateUser() {
