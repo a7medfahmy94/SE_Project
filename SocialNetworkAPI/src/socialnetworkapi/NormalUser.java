@@ -17,7 +17,6 @@ public class NormalUser extends IUser {
         return ret;
     }
 
-    @Override
     public boolean sendFriendRequest(IUser u) {
         if(this.checkCurrentFriendsCount()){
             return UserModel.makeFriendRequest(this,u);
@@ -25,7 +24,7 @@ public class NormalUser extends IUser {
         return false;
     }
 
-    @Override
+    
     public void addFriend() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

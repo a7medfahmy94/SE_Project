@@ -12,7 +12,8 @@ public class Group extends IGroup {
 
     public GroupModel myGroupModel;
 
-  public void addMember(IUser user) {
+  public static boolean addMember(IUser user) {
+      return true;
   }
 
   public void removeMember() {
