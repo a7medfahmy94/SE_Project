@@ -3,8 +3,10 @@ package socialnetworkapi;
 import java.util.Vector;
 
 public abstract class IGroup {
+    public abstract boolean promoteUser(IUser user,String newRole);
 
-  public GroupPrivacy privacy;
+  
+    public GroupPrivacy privacy;
 
     
     public GroupPrivacy myGroupPrivacy;
