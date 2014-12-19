@@ -10,5 +10,9 @@ public abstract class GroupPrivacy {
 
   public void getAllowedMembers(IGroup group) {
   }
+  public static boolean setAllowedMembers(){
+      return true;
+  }
+  
 
 }
