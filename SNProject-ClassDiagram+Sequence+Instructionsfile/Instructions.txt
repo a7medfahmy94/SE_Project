@@ -1,0 +1,12 @@
+- Please check this video firstly to understand class diagram
+  https://www.youtube.com/watch?v=tCNkO3A7364&feature=youtu.be
+- Generate first code from given class diagram, fix errors
+- In this phase, you are required to implement all functions of User component 
+  (create user, signUp, login, addfriend, sendFriendRequest, think about more user functions). 
+  check create new user sequence and send friend request sequence
+- (Optional in initial phase) you should implement group and page component
+- (Optional in initial phase) you should connect your API with SQL DB, Check this video to know steps, you will use jar file in attached zip file
+  https://www.youtube.com/watch?v=E30_-pQGQXs
+  (don't forget that this part is bonus also with 1 grade :D )
+- optional steps in initial phase will help you more in final phase, in final phase it's better to focus on complicated components
+  So it's better to finish implementation of easy components in this phase :D
