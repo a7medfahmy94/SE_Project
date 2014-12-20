@@ -1,6 +1,7 @@
 package socialnetworkapi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Group {
@@ -9,12 +10,12 @@ public class Group {
     private String coverPic;
     public String privacy;
     public int id;
-    private ArrayList<IUser> users;
+    private HashMap<Integer,String> users;
 
     public int getId(){return id;}
     public String getTitle(){return title;}
     public String getCoverPic(){return coverPic;}
-    public ArrayList<IUser> getUsers(){return users;}
+    public HashMap<Integer,String> getUsers(){return users;}
 
     public Group(int id,String title,String coverPic,String privacy){
         this.id =  id;
@@ -23,13 +24,26 @@ public class Group {
         this.privacy = privacy;
     }
     
+    public boolean changeGroupPicture(IUser user,String newPic){
+        if(canChangeCover(user)){
+            return GroupModel.updateGroupPhoto(this, newPic);
+        }
+        return false;
+    }
+    
+    private boolean canChangeCover(IUser user){
+        if(users.containsKey(user.getId())){
+            return users.get(user.getId()) != "member";
+        }
+        return false;
+    }
+    
     public void initUsers(){
         users = GroupModel.getMembers(this);
     }
     
     public boolean addMember(IUser user) {
         if(!isMember(user)){
-            users.add(user);
             GroupModel.addMemberToGroup(this, user, "member");
             return true;
         }else{
@@ -38,12 +52,7 @@ public class Group {
     }
 
     public boolean isMember(IUser user){
-        for(int i = 0 ; i < users.size(); i++){
-            if(users.get(i).getId() == user.getId()){
-                return true;
-            }
-        }
-        return false;
+        return users.containsKey(user.getId());
     }
     
     

@@ -8,7 +8,7 @@ import java.util.Vector;
 
 public abstract class IUser {
 
-    public static IUser currentUser;
+    private static IUser currentUser;
     
     protected ArrayList<Group> subscribedGroups = new ArrayList<>();
     protected ArrayList<IPage> likedPages = new ArrayList<>();
@@ -54,15 +54,19 @@ public abstract class IUser {
     public static IUser getCurrentActiveUser() {
         return currentUser;
     }
-    
+    public static void setCurrentUser(IUser u){
+        currentUser = u;
+    }
     public ArrayList<IUser> getFriendsList(){
         return friendsList;
     }
     
     
-    public static IUser login(Map<String,String>data) {
-        IUser user = UserModel.getUser(data);
-        return user;
+    public static IUser login(String email,String password) {
+        if(UserModel.verify(email,password)){
+            return UserModel.getUser(email);
+        }
+        return null;
     }
 
     public void logout() {

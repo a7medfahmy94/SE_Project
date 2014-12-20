@@ -7,9 +7,13 @@ import java.util.Map;
 
 public class APICont {
     
-    public boolean login(Map<String,String>data){
-        IUser.login(data);
-        return true;
+    public boolean login(String email,String password){
+        IUser user = IUser.login(email,password);
+        if(user != null){
+            IUser.setCurrentUser(user);
+            return true;
+        }
+        return false;
     }
     
     public boolean promoteMember(IUser user,String newRole){
@@ -17,10 +21,10 @@ public class APICont {
         return true;
     }
     
-    public List<IUser> searchForUser(String email){
-        List<IUser> ret;
+    public IUser searchForUser(String email){
+        IUser ret;
         IUser user = IUser.getCurrentActiveUser();
-        ret = UserModel.getUsers(email);
+        ret = UserModel.getUser(email);
         return ret;
     }
     
@@ -49,9 +53,9 @@ public class APICont {
         return true;
     }
     
-    public boolean likeAPage(IPage page){
+    public boolean likeAPage(Page page){
         IUser userObject=IUser.getCurrentActiveUser();
-        IPage.likeAPage(page,userObject);
+        Page.likeAPage(page,userObject);
         
         return true;
     }
@@ -77,8 +81,9 @@ public class APICont {
         
         return true;
     }
-    public boolean changeGroupCover(String photo){
-        IUser userObject=IUser.getCurrentActiveUser();
+    public boolean changeGroupCover(Group group,String photo){
+        IUser user=IUser.getCurrentActiveUser();
+        group.changeGroupPicture(user,photo);
         return true;
     }
     public boolean addMember(Group group,IUser user){
@@ -98,6 +103,15 @@ public class APICont {
     }
     
     public static void main(String args[]){
+        //login
+        APICont api = new APICont();
+        if(api.login("a7med.fahmy94@gmail.com", "123456")){
+            System.out.println(IUser.getCurrentActiveUser().getEmail());
+        }else{
+            System.out.println("Wrong email or password");
+        }
+        
+// add member        
         //Group group = new GroupModel().getGroup(1);
         //IUser user = UserModel.getUser(1);
         //if(user != null && group != null){
@@ -105,10 +119,23 @@ public class APICont {
       //  }
         
    // add friend
-        IUser.currentUser = new NormalUser(1,"ahmed fahmy",
-                "a7med.fahmy94@gmail.com","male");
-        APICont api = new APICont();
-        api.addFriend(new NormalUser(2,"hala mohamed","hala.mohamed199@gmail.com"
-                ,"female"));
+//        IUser.currentUser = new NormalUser(1,"ahmed fahmy",
+//                "a7med.fahmy94@gmail.com","male");
+//        APICont api = new APICont();
+//        api.addFriend(new NormalUser(2,"hala mohamed","hala.mohamed199@gmail.com"
+//                ,"female"));
+    
+ // likeApage 
+//        IUser.currentUser = UserModel.getUser(1);
+//        APICont api = new APICont();
+//        api.likeAPage(PageModel.getPage(1));
+        
+        //update cover photo
+//        Group g = GroupModel.getGroup(1);
+//        IUser owner = UserModel.getUser(2);
+//        IUser.currentUser = owner;
+//        new APICont().changeGroupCover(g, "HOPA");
     }
 }
+
+

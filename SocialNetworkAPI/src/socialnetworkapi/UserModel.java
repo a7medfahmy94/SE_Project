@@ -19,9 +19,6 @@ public class UserModel {
   public void DeleteUser() {
   }
 
-  public static ArrayList<IUser> getUsers(String email) {
-      return new ArrayList<IUser>();
-  }
 
   public void updateUser() {
   }
@@ -52,8 +49,25 @@ public class UserModel {
         db.execute(q);
         return true;
     }
-    public static IUser getUser(Map<String,String>data){
-        return myUser;
+    
+    public static boolean verify(String email,String password){
+        String q = "select * from users where email='" + email +"' and " +
+                "password='" + password + "'";
+        ArrayList<IUser> r = getUserFromResult(new DB().executeQuery(q));
+        if(r == null || r.size() == 0){
+            return false;
+        }
+        return true;
+    }
+    
+    public static IUser getUser(String email){
+        String q = "select * from users where email='" + email +"'";
+        ArrayList<IUser> r = getUserFromResult(new DB().executeQuery(q));
+        if(r == null || r.size() == 0){
+            System.out.println("no user with email=" + email);
+            return null;
+        }
+        return r.get(0);
     }
     
     public static IUser getUser(int id){

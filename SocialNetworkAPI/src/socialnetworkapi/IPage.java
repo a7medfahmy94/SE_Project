@@ -14,7 +14,7 @@ public abstract class IPage {
 
   public static boolean likeAPage(IPage page,IUser userObject) {
      
-      PageModel.createLike(page, userObject);
+  //    PageModel.createLike(page, userObject);
       return true;
   }
   public static IPage createPage(Map<String,String>data,IUser object){
