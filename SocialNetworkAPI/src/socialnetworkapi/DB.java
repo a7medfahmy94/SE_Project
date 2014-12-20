@@ -24,36 +24,50 @@ public class DB {
     final String USER = "root";
     final String PASS = "fahmy1234";
 
-    DB(){}
+    private Connection conn=null;
+    private Statement stmt =null;
+        
+    DB(){  }
 
-    public void connect(){
+    public ResultSet execute(String q){
         try {
-            Connection conn=null;
-            Statement stmt =null;
             // STEP 2: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
-
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = (Statement) conn.createStatement();
-
-            ////////////////////////////////////////////////////
-            String sql2 = "select * from users";//client is table name
-            ResultSet rs = stmt.executeQuery(sql2);
-            // STEP 5: Extract data from result set
-            while (rs.next()) {
-                // Retrieve by column name
-                String name = rs.getString("name");//column name
-                System.out.println(name);
-            }
-            rs.close();
-            stmt.close();
-            conn.close();
+            ResultSet rs = this.stmt.executeQuery(q);
+            this.stmt.close();
+            this.conn.close();
+            return rs;
         }catch(ClassNotFoundException e){
             System.out.println(e.getMessage());
 
         }catch(SQLException e){
-            System.out.println("sql error");
+            System.out.println(e.getMessage());
 
-        }    
+        }
+        return null;
+    }
+    
+    
+    public int getUser(String email){
+        String q = "select * from users where email = '"+email+"'";
+        ResultSet r = execute(q);
+        try{
+            if(r.next()){
+                return Integer.valueOf(r.getString("id"));
+            }else{
+                return -1;
+            }
+        }catch(SQLException e){}
+        return -1;
     }
 }
+
+
+//        // STEP 5: Extract data from result set
+//        while (rs.next()) {
+//            // Retrieve by column name
+//            String name = rs.getString("name");//column name
+//            System.out.println(name);
+//        }

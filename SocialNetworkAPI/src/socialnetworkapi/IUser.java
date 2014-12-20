@@ -8,71 +8,68 @@ import java.util.Vector;
 
 public abstract class IUser {
 
-  public List<IGroup> subscribedGroups;
-
-  public List<IPage> likedPages;
-
-  public String name;
-
-  public String email;
-
-  private static IUser currentUser;
-
-  public Message message;
-
-    public IUser myUser;
-    public IUser Instance;
-    /**
-   * 
-   * @element-type IGroup
-   */
-  public Vector  memberIn;
-    public Vector  myClosedPrivacy;
-    public Vector  myPage;
-    public Vector  myIPage;
-    public Vector  myUserG;
-    public Vector  myMessage;
-    public UserModel myUserModel;
+    public static IUser currentUser;
+    
+    protected ArrayList<IGroup> subscribedGroups = new ArrayList<>();
+    protected ArrayList<IPage> likedPages = new ArrayList<>();
+    protected ArrayList<IUser> friendsList = new ArrayList<>();
+    protected String name;
+    protected String email;
+    protected String gender;
+    protected String type;
+    protected int id;
 
     
-  public abstract boolean sendFriendRequest(IUser u);
+    public String getEmail(){return email;}
+    public String getName(){return name;}
+    public int getId(){return id;}
+    public String getGender(){return gender;}
+    public String getType(){return type;}
+    
+    
+    public abstract boolean sendFriendRequest(IUser u);
 
-  public  static boolean addFriend(IUser user){
-      UserModel.addNewFriendship(user);
-      return true;
-  }
+    public void initFriendsList(){
+        friendsList = UserModel.getFriendsList(this);
+    }
+    
+    public boolean addFriend(IUser user){
+        UserModel.addNewFriendship(this,user);
+        return true;
+    }
 
-  public static boolean signUp(HashMap<String,String> data) {
-      IUser newUser;
-      if(data.get("userType").equals("premium")){
-          newUser = PremiumUser.makeInstance();
-      }else{
-          newUser = NormalUser.makeInstance();
-      }
-      if(newUser != null){
-          return UserModel.saveUserData(newUser);
-      }
-      return false;
-  }
+    public static boolean signUp(HashMap<String,String> data) {
+        IUser newUser;
+        if(data.get("userType").equals("premium")){
+//            newUser = PremiumUser.makeInstance();
+        }else{
+//            newUser = NormalUser.makeInstance();
+        }
+//        if(newUser != null){
+//            return UserModel.saveUserData(newUser);
+//        }
+        return false;
+    }
 
-  public static IUser getCurrentActiveUser() {
-      return currentUser;
-  }
-  public static ArrayList<IUser> getPendingRequests(){
-      
-      ArrayList<IUser>users;
-      users=UserModel.getUserFriends(currentUser);
-      return users;
-  }
-  public static IUser login(Map<String,String>data) {
-      IUser user=UserModel.getUser(data);
-      return user;
-  }
+    public static IUser getCurrentActiveUser() {
+        return currentUser;
+    }
+    
+    public ArrayList<IUser> getFriendsList(){
+        return friendsList;
+    }
+    
+    
+    public static IUser login(Map<String,String>data) {
+        IUser user = UserModel.getUser(data);
+        return user;
+    }
 
-  public void logout() {
-  }
+    public void logout() {
+    }
 
-  private void User() {
-  }
+    private void User() {
+    }
+
 
 }

@@ -85,19 +85,25 @@ public class APICont {
         IGroup.addMember(user);
         return true;
     }
-    public ArrayList<IUser> getPendingRequests(){
-        IUser userObject=IUser.getCurrentActiveUser();
-        ArrayList<IUser> users=new ArrayList<>();
-        users=IUser.getPendingRequests();
-        return users ;
-        
-    }
+   
     public boolean addFriend(IUser user){
-        IUser.addFriend(user);
+        IUser current = IUser.getCurrentActiveUser();
+        ArrayList<IUser> friends = current.getFriendsList();
+        for(int i = 0 ; i < friends.size(); i++){
+            if(friends.get(i).getId() == user.getId()){
+                return false;
+            }
+        }
+        current.addFriend(user);
         return true;
     }
     
     public static void main(String args[]){
-        new DB().connect();
+//        IUser.currentUser = new NormalUser(1,"ahmed fahmy",
+//                "a7med.fahmy94@gmail.com","male");
+//        APICont api = new APICont();
+//        api.addFriend(new NormalUser(2,"hala mohamed","hala.mohamed199@gmail.com"
+//                ,"female"));
+        new DB().execute("insert into friends VALUES(1,2, 'pending' )");
     }
 }
