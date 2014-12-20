@@ -3,10 +3,7 @@ package socialnetworkapi;
 public class PageModel {
 
     public Page myPage;
-
-  public void createPage() {
-  }
-
+    
   public void deletePage() {
   }
 
@@ -15,5 +12,10 @@ public class PageModel {
 
   public void updatePage() {
   }
-
+  public static boolean createLike(IPage page,IUser user){
+      return true;
+  }
+   public static boolean createPage(IPage page,IUser user){
+      return true;
+  }
 }

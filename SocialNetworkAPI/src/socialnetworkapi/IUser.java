@@ -1,7 +1,9 @@
 package socialnetworkapi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 public abstract class IUser {
@@ -35,7 +37,10 @@ public abstract class IUser {
     
   public abstract boolean sendFriendRequest(IUser u);
 
-  public abstract void addFriend();
+  public  static boolean addFriend(IUser user){
+      UserModel.addNewFriendship(user);
+      return true;
+  }
 
   public static boolean signUp(HashMap<String,String> data) {
       IUser newUser;
@@ -53,8 +58,15 @@ public abstract class IUser {
   public static IUser getCurrentActiveUser() {
       return currentUser;
   }
-
-  public void login() {
+  public static ArrayList<IUser> getPendingRequests(){
+      
+      ArrayList<IUser>users;
+      users=UserModel.getUserFriends(currentUser);
+      return users;
+  }
+  public static IUser login(Map<String,String>data) {
+      IUser user=UserModel.getUser(data);
+      return user;
   }
 
   public void logout() {

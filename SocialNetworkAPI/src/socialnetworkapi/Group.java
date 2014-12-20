@@ -12,7 +12,8 @@ public class Group extends IGroup {
 
     public GroupModel myGroupModel;
 
-  public void addMember(IUser user) {
+  public static boolean addMember(IUser user) {
+      return true;
   }
 
   public void removeMember() {
@@ -21,8 +22,7 @@ public class Group extends IGroup {
   public void setRole() {
   }
 
-    @Override
-    public boolean promoteUser(IUser user, String newRole) {
+    public static boolean promoteUser(IUser user, String newRole) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
