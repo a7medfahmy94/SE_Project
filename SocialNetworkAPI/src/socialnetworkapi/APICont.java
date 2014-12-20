@@ -13,7 +13,7 @@ public class APICont {
     }
     
     public boolean promoteMember(IUser user,String newRole){
-        IGroup.promoteUser(user, newRole);
+//        IGroup.promoteUser(user, newRole);
         return true;
     }
     
@@ -72,8 +72,8 @@ public class APICont {
     }
     public boolean createGroup(Map<String,String>data){
         IUser userObject=IUser.getCurrentActiveUser();
-        IGroup groupObject=IGroup.makeGroup(data, userObject);
-        GroupModel.createGroup(groupObject);
+//        Group groupObject=Group.makeGroup(data, userObject);
+//        GroupModel.createGroup(groupObject);
         
         return true;
     }
@@ -81,9 +81,8 @@ public class APICont {
         IUser userObject=IUser.getCurrentActiveUser();
         return true;
     }
-    public boolean addMember(IGroup group,IUser user){
-        IGroup.addMember(user);
-        return true;
+    public boolean addMember(Group group,IUser user){
+        return group.addMember(user);
     }
    
     public boolean addFriend(IUser user){
@@ -99,11 +98,17 @@ public class APICont {
     }
     
     public static void main(String args[]){
-//        IUser.currentUser = new NormalUser(1,"ahmed fahmy",
-//                "a7med.fahmy94@gmail.com","male");
-//        APICont api = new APICont();
-//        api.addFriend(new NormalUser(2,"hala mohamed","hala.mohamed199@gmail.com"
-//                ,"female"));
-        new DB().execute("insert into friends VALUES(1,2, 'pending' )");
+        //Group group = new GroupModel().getGroup(1);
+        //IUser user = UserModel.getUser(1);
+        //if(user != null && group != null){
+        //    new APICont().addMember(group, user);
+      //  }
+        
+   // add friend
+        IUser.currentUser = new NormalUser(1,"ahmed fahmy",
+                "a7med.fahmy94@gmail.com","male");
+        APICont api = new APICont();
+        api.addFriend(new NormalUser(2,"hala mohamed","hala.mohamed199@gmail.com"
+                ,"female"));
     }
 }

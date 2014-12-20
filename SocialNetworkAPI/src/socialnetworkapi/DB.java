@@ -23,21 +23,19 @@ public class DB {
     // Database credentials
     final String USER = "root";
     final String PASS = "fahmy1234";
-
-    private Connection conn=null;
-    private Statement stmt =null;
+    
         
     DB(){  }
 
-    public ResultSet execute(String q){
+    public ResultSet executeQuery(String q){
         try {
+            Connection conn=null;
+            Statement stmt =null;
             // STEP 2: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = (Statement) conn.createStatement();
-            ResultSet rs = this.stmt.executeQuery(q);
-            this.stmt.close();
-            this.conn.close();
+            ResultSet rs = stmt.executeQuery(q);
             return rs;
         }catch(ClassNotFoundException e){
             System.out.println(e.getMessage());
@@ -49,10 +47,29 @@ public class DB {
         return null;
     }
     
+    public boolean execute(String q){
+        try {
+            Connection conn=null;
+            Statement stmt =null;
+            // STEP 2: Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = (Statement) conn.createStatement();
+            return stmt.execute(q);
+        }catch(ClassNotFoundException e){
+            System.out.println(e.getMessage());
+
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+
+        }
+        return false;
+    }
+    
     
     public int getUser(String email){
         String q = "select * from users where email = '"+email+"'";
-        ResultSet r = execute(q);
+        ResultSet r = executeQuery(q);
         try{
             if(r.next()){
                 return Integer.valueOf(r.getString("id"));
@@ -71,3 +88,5 @@ public class DB {
 //            String name = rs.getString("name");//column name
 //            System.out.println(name);
 //        }
+
+

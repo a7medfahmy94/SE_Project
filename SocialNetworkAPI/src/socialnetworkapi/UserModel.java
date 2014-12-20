@@ -36,24 +36,9 @@ public class UserModel {
       int id = user.getId();
       String query = "select * from friends where userOne="+id+" or " +
               "userTwo=" + id;
-      ResultSet r = db.execute(query);
-        try {
-            while(r.next()){
-                HashMap<String,String> data = new HashMap<>();
-                data.put("name", r.getString("name"));
-                data.put("id", r.getString("id"));
-                data.put("email", r.getString("email"));
-                data.put("type", r.getString("type"));
-                data.put("gender", r.getString("gender"));
-                if(r.getString("type").equals("normal")){
-                    ret.add(NormalUser.makeInstance(data));
-                }else{
-                    ret.add(PremiumUser.makeInstance(data));
-                }
-            } 
-        } catch (SQLException ex) {
-            Logger.getLogger(UserModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      ResultSet r = db.executeQuery(query);
+        ret = getUserFromResult(r);
+        
         return ret;
   }
  
@@ -69,5 +54,40 @@ public class UserModel {
     }
     public static IUser getUser(Map<String,String>data){
         return myUser;
+    }
+    
+    public static IUser getUser(int id){
+        String q = "select * from users where id=" + id;
+        DB db = new DB();
+        ResultSet r = db.executeQuery(q);
+        ArrayList<IUser> ret = UserModel.getUserFromResult(r);
+        if(ret == null || ret.size() == 0){
+            System.out.println("can't find user with id=" + id);
+            return null;
+        }else{
+            return ret.get(0);
+        }
+    }
+    
+    public static ArrayList<IUser> getUserFromResult(ResultSet r){
+        ArrayList<IUser> ret = new ArrayList<>();
+        try {
+            while(r.next()){
+                HashMap<String,String> data = new HashMap<>();
+                data.put("name", r.getString("name"));
+                data.put("id", r.getString("id"));
+                data.put("email", r.getString("email"));
+                data.put("type", r.getString("type"));
+                data.put("gender", r.getString("gender"));
+                if(r.getString("type").equals("normal")){
+                    ret.add(NormalUser.makeInstance(data));
+                }else{
+                    ret.add(PremiumUser.makeInstance(data));
+                }
+            }
+        } catch (SQLException ex) { 
+            Logger.getLogger(UserModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
     }
 }

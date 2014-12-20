@@ -10,7 +10,7 @@ public abstract class IUser {
 
     public static IUser currentUser;
     
-    protected ArrayList<IGroup> subscribedGroups = new ArrayList<>();
+    protected ArrayList<Group> subscribedGroups = new ArrayList<>();
     protected ArrayList<IPage> likedPages = new ArrayList<>();
     protected ArrayList<IUser> friendsList = new ArrayList<>();
     protected String name;
