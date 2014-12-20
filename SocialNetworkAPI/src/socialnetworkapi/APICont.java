@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class APICont {
-    public boolean promoteMember(IUser user,String newRole){
-        IGroup.promoteUser(user,newRole);
-    }
     
     public List<IUser> searchForUser(String email){
         List<IUser> ret;
@@ -39,6 +36,11 @@ public class APICont {
         m.sendMessage();
         return true;
     }
+    
+    public static void main(String args[]){
+        new DB().connect();
+    }
+    
 }
 
 

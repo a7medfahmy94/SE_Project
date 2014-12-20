@@ -11,7 +11,5 @@ public abstract class IPage {
    */
   public Vector  like;
 
-  public void likeAPage() {
-  }
 
 }

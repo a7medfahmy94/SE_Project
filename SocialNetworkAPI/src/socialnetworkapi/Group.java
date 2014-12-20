@@ -21,4 +21,9 @@ public class Group extends IGroup {
   public void setRole() {
   }
 
+    @Override
+    public boolean promoteUser(IUser user, String newRole) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
