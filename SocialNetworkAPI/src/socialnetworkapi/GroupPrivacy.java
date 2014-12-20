@@ -4,11 +4,14 @@ import java.util.List;
 
 public abstract class GroupPrivacy {
 
-  public List<IUser> allowedUsers;
+    public List<IUser> allowedUsers;
 
-    public IGroup myIGroup;
-
-  public void getAllowedMembers(IGroup group) {
-  }
+    public void getAllowedMembers(Group group) {
+        
+    }
+    public static boolean setAllowedMembers(){
+        return true;
+    }
+  
 
 }

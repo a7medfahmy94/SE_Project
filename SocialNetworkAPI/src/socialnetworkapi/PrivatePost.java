@@ -8,7 +8,7 @@ public class PrivatePost extends PrivacyPost {
     public PrivatePost(UserPost p){post=p;}
     
     public boolean savePost(){
-        List l = UserModel.getUserFriends(post.getUser());
+//        List l = UserModel.getUserFriends(post.getUser());
         return PostModel.createPost(post);
         
     }

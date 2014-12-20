@@ -1,8 +1,16 @@
 package socialnetworkapi;
 
+import java.util.HashMap;
+
 public class NormalUser extends IUser {
 
-    private NormalUser(){}
+    public NormalUser(int id,String name,String email,String gender){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+        this.type = "normal";
+    }
     
     public boolean checkCurrentFriendsCount() {
         return true;
@@ -11,13 +19,15 @@ public class NormalUser extends IUser {
     public void initializeFriends(){  
     }
   
-    public static IUser makeInstance(){
-        NormalUser ret = new NormalUser();
-        ret.initializeFriends();
+    public static IUser makeInstance(HashMap<String,String> data){
+        NormalUser ret = new NormalUser(
+            Integer.valueOf(data.get("id")),data.get("name"),data.get("email"),
+            data.get("gender")
+        );
+        
         return ret;
     }
 
-    @Override
     public boolean sendFriendRequest(IUser u) {
         if(this.checkCurrentFriendsCount()){
             return UserModel.makeFriendRequest(this,u);
@@ -25,7 +35,7 @@ public class NormalUser extends IUser {
         return false;
     }
 
-    @Override
+    
     public void addFriend() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
